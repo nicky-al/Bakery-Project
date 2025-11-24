@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo isset($page_title) ? htmlspecialchars($page_title) : "Sweet Crumbs Bakery"; ?></title>
-<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles.css?v=<?php echo time(); ?>">
 </head>
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a href="/index.php" class="brand">🍞 Sweets & Crumbs</a>
+    <a href="/index.php" class="brand">Sweets & Crumbs</a>
     <nav class="nav">
       <a href="/index.php">Home</a>
       <a href="/cart.php">
