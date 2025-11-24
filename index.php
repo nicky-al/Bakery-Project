@@ -1,5 +1,4 @@
 <?php
-// public/index.php
 session_start();
 $page_title = "Fresh bakes — Sweet Crumbs";
 require_once __DIR__ . '/../config/db.php';
@@ -34,14 +33,14 @@ $products = $stmt->fetchAll();
 <div class="grid">
   <?php foreach ($products as $p): ?>
     <div class="card">
-      <img src="<?php echo htmlspecialchars($p['image'] ?: '/bakery-store/assets/images/placeholder.jpg'); ?>" alt="<?php echo htmlspecialchars($p['name']); ?>">
+<img src="<?php echo htmlspecialchars($p['image'] ?: '/assets/images/placeholder.jpg'); ?>">
       <div class="pad">
         <h3><?php echo htmlspecialchars($p['name']); ?></h3>
         <?php if (!empty($p['category'])): ?><span class="badge"><?php echo htmlspecialchars($p['category']); ?></span><?php endif; ?>
         <p><?php echo htmlspecialchars(mb_strimwidth($p['description'] ?? '', 0, 90, '…')); ?></p>
         <p class="price">$<?php echo number_format($p['price'], 2); ?></p>
         <div class="actions">
-          <a class="btn" href="/public/product.php?id=<?php echo (int)$p['id']; ?>">View</a>
+<a class="btn" href="/product.php?id=<?php echo (int)$p['id']; ?>">View</a>
 <button class="btn" data-add="<?php echo (int)$p['id']; ?>">Add to Cart</button>
         </div>
       </div>
