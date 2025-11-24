@@ -11,7 +11,6 @@ require_once __DIR__ . '/../includes/header.php';
 $action = $_GET['action'] ?? '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { verify_csrf(); }
 
-// Create
 if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $price = (float)($_POST['price'] ?? 0);
@@ -25,7 +24,6 @@ if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: /admin/products.php?m=created"); exit;
 }
 
-// Update
 if ($action === 'update' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = (int)($_POST['id'] ?? 0);
     $name = trim($_POST['name'] ?? '');
@@ -41,7 +39,6 @@ if ($action === 'update' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: /admin/products.php?m=updated"); exit;
 }
 
-// Delete
 if ($action === 'delete') {
     $id = (int)($_GET['id'] ?? 0);
     if ($id) {
@@ -51,7 +48,6 @@ if ($action === 'delete') {
     header("Location: /admin/products.php?m=deleted"); exit;
 }
 
-// Load products
 $products = $pdo->query("SELECT * FROM products ORDER BY created_at DESC")->fetchAll();
 ?>
 <h1>Products</h1>
