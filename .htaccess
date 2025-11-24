@@ -1,3 +1,2 @@
-# Optional: ensure PHP index is used (requires AllowOverride All in Apache)
 Options -Indexes
 DirectoryIndex index.php
