@@ -1,6 +1,5 @@
 <?php
 // config/db.php
-// Update credentials to match your WAMP MySQL setup
 $DB_HOST = "127.0.0.1";
 $DB_NAME = "bakery_store";
 $DB_USER = "root";
