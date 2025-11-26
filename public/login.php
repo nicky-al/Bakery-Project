@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user && password_verify($password, $user['password_hash'])) {
         $_SESSION['user'] = ['id'=>$user['id'],'name'=>$user['name'],'email'=>$user['email'],'role'=>$user['role']];
-        header("Location: /public/index.php");
+        header("Location: /index.php");
         exit;
     } else {
         $error = "Invalid email or password.";
@@ -30,6 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <input class="input" type="password" name="password" required minlength="6">
   <?php if ($error): ?><p class="error"><?php echo htmlspecialchars($error); ?></p><?php endif; ?>
   <button class="btn" type="submit">Login</button>
-  <p>No account? <a href="/public/register.php">Register</a></p>
+  <p>No account? <a href="/register.php">Register</a></p>
 </form>
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>
