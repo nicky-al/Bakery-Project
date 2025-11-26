@@ -3,7 +3,6 @@
 session_start();
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../includes/auth.php';
-require_once __DIR__ . '/../includes/csrf.php';
 require_admin();
 $page_title = "Edit product";
 require_once __DIR__ . '/../includes/header.php';
@@ -16,7 +15,6 @@ if (!$p) { echo "<p>Not found</p>"; require_once __DIR__ . '/../includes/footer.
 ?>
 <h1>Edit product #<?php echo (int)$p['id']; ?></h1>
 <form method="post" class="form" action="/admin/products.php?action=update">
-  <?php csrf_field(); ?>
   <input type="hidden" name="id" value="<?php echo (int)$p['id']; ?>">
   <label>Name</label><input class="input" name="name" value="<?php echo htmlspecialchars($p['name']); ?>" required>
   <label>Description</label><textarea class="input" name="description" rows="3"><?php echo htmlspecialchars($p['description']); ?></textarea>

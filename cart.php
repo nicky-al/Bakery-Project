@@ -13,7 +13,6 @@ $total = 0;
   <p>Your cart is empty.</p>
 <?php else: ?>
   <form action="/checkout.php" method="post" class="form">
-    <?php require_once __DIR__ . '/../includes/csrf.php'; csrf_field(); ?>
     <table class="table">
       <thead>
         <tr><th>Item</th><th>Qty</th><th>Price</th><th>Subtotal</th><th></th></tr>

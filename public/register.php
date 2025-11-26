@@ -3,12 +3,10 @@
 session_start();
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../includes/header.php';
-require_once __DIR__ . '/../includes/csrf.php';
 
 $error = null;
 $success = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    verify_csrf();
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
@@ -31,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <h1>Register</h1>
 <form method="post" class="form">
-  <?php csrf_field(); ?>
   <label>Name</label>
   <input class="input" type="text" name="name" required>
   <label>Email</label>

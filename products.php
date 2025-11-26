@@ -3,13 +3,11 @@
 session_start();
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../includes/auth.php';
-require_once __DIR__ . '/../includes/csrf.php';
 require_admin();
 $page_title = "Manage products";
 require_once __DIR__ . '/../includes/header.php';
 
 $action = $_GET['action'] ?? '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') { verify_csrf(); }
 
 if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
@@ -55,7 +53,6 @@ $products = $pdo->query("SELECT * FROM products ORDER BY created_at DESC")->fetc
 <section class="form">
   <h2>Add new product</h2>
   <form method="post" action="/admin/products.php?action=create">
-    <?php csrf_field(); ?>
     <label>Name</label><input class="input" name="name" required>
     <label>Description</label><textarea class="input" name="description" rows="3"></textarea>
     <div class="row">
